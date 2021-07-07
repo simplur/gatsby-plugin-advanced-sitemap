@@ -1,13 +1,16 @@
 {
-  "name": "gatsby-plugin-advanced-sitemap",
+  "name": "@simplur/gatsby-plugin-advanced-sitemap",
   "description": "Advanced plugin for generating configurable XML sitemaps with linked media for better SEO and human-readable XSL templates.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "author": "Ghost Foundation",
   "homepage": "https://ghost.org/docs/jamstack/gatsby/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tryghost/gatsby-plugin-advanced-sitemap.git"
+    "url": "git@github.com:simplur/gatsby-plugin-advanced-sitemap.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "engines": {
     "node": ">= 12.19.0"
@@ -26,10 +29,11 @@
     "build": "babel src --out-dir . --ignore **/__tests__",
     "prepare": "cross-env NODE_ENV=production yarn build",
     "watch": "babel -w src --out-dir . --ignore **/__tests__",
-    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn publish && git push --follow-tags; fi"
+    "ship": "STATUS=$(git status --porcelain); echo $STATUS; if [ -z \"$STATUS\" ]; then yarn publish && git push --follow-tags; fi",
+    "prepublish": "yarn run prepare"
   },
   "peerDependencies": {
-    "gatsby": "^3.0.0"
+    "gatsby": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.14.3",
